@@ -46,7 +46,7 @@ public class TaskController {
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    private void update(@PathVariable long id, Task task) {
+    private void update(@PathVariable long id, @RequestBody Task task) {
         task.setId(id);
         try {
             taskService.update(task);
@@ -58,6 +58,6 @@ public class TaskController {
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     private List<Task> listAll() {
-        return listAll();
+        return taskService.listAll();
     }
 }
